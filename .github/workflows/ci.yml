@@ -42,8 +42,7 @@ jobs:
       - name: Configure larger stack for Windows
         if: runner.os == 'Windows'
         run: |
-          echo "[target.'cfg(windows)']" >> .cargo/config.toml
-          echo 'rustflags = ["-C", "link-args=/STACK:67108864"]' >> .cargo/config.toml
+          echo "RUSTFLAGS=-C link-args=/STACK:67108864" >> $GITHUB_ENV
 
       - name: build with cryptographically-insecure turned on (if available)
         run: cargo build --features cryptographically-insecure
