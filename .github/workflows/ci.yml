@@ -22,7 +22,7 @@ jobs:
     env:
       CARGO_TERM_COLOR: always
       # 20 MiB stack
-      RUST_MIN_STACK: 20971520
+      RUST_MIN_STACK: 50331648
       MIRIFLAGS: "-Zmiri-strict-provenance"
 
     steps:
@@ -66,8 +66,11 @@ jobs:
     env:
       RUSTFLAGS: "-Cinstrument-coverage -Clink-dead-code -Coverflow-checks=off"
       LLVM_PROFILE_FILE: "coverage/%p-%m.profraw"
+      RUST_MIN_STACK: 50331648
     steps:
     - uses: actions/checkout@v4
+      with:
+        submodules: true
     - name: Set up Rust with coverage tools
       uses: actions-rs/toolchain@v1
       with:
@@ -113,7 +116,7 @@ jobs:
     env:
       CARGO_TERM_COLOR: always
       # 20 MiB stack
-      RUST_MIN_STACK: 20971520
+      RUST_MIN_STACK: 50331648
 
     steps:
       - uses: actions/checkout@v4

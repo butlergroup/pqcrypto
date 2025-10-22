@@ -14,6 +14,11 @@
 This repository contains bindings to C implementations of cryptographic algorithms part of the [NIST competition][nist].
 These bindings are generated based on the [PQClean][pqclean] project, which aims to collect 'clean' implementations of cryptographic algorithms.
 
+## Info on this fork
+
+ - Dependencies/crates have been updated to their latest versions without build errors
+ - Ongoing status of any security issues, dependencies, and platform/unit tests will be available via the badges above
+
 ## How to generate the bindings
 
 The `pqcrypto-templates` folder contains the master copies of the Rust files.
