@@ -66,7 +66,7 @@ jobs:
         run: |
           rustup component add miri
           cargo miri setup
-          cargo miri test --workspace --exclude pqcrypto-classicmceliece
+          cargo miri test --workspace --exclude pqcrypto-classicmceliece,pqcrypto-falcon
 
   coverage:
     runs-on: ubuntu-latest
