@@ -43,6 +43,7 @@ jobs:
         run: cargo build --features cryptographically-insecure
 
       - name: Run tests with cryptographically-insecure turned on
+        shell: bash
         run: |
           if [[ "${{ matrix.os }}" == "windows-latest" ]]; then
             # Skip the stack-intensive McEliece tests on Windows
