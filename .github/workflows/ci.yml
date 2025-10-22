@@ -21,7 +21,7 @@ jobs:
         rust: [nightly, beta, stable]
     env:
       CARGO_TERM_COLOR: always
-      # 20 MiB stack
+      # 48 MiB stack
       RUST_MIN_STACK: 50331648
       MIRIFLAGS: "-Zmiri-strict-provenance"
 
@@ -38,6 +38,12 @@ jobs:
           echo CARGO_TERM_COLOR=always >> $GITHUB_ENV
           echo CARGO_INCREMENTAL=0 >> $GITHUB_ENV
           echo RUST_BACKTRACE=1 >> $GITHUB_ENV
+
+      - name: Configure larger stack for Windows
+        if: runner.os == 'Windows'
+        run: |
+          echo "[target.'cfg(windows)']" >> .cargo/config.toml
+          echo 'rustflags = ["-C", "link-args=/STACK:67108864"]' >> .cargo/config.toml
 
       - name: build with cryptographically-insecure turned on (if available)
         run: cargo build --features cryptographically-insecure
@@ -115,7 +121,7 @@ jobs:
           - nightly
     env:
       CARGO_TERM_COLOR: always
-      # 20 MiB stack
+      # 48 MiB stack
       RUST_MIN_STACK: 50331648
 
     steps:
