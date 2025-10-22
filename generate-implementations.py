@@ -40,6 +40,7 @@ def render_template(target_dir, target_file, template_file, **templ_vars):
         undefined=jinja2.StrictUndefined,
         trim_blocks=True,
         lstrip_blocks=True,
+        autoescape=True,
     )
     env.filters['namespaceize'] = namespaceize
     env.filters['nameize'] = nameize
