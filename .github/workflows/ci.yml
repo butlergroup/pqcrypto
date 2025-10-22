@@ -47,7 +47,7 @@ jobs:
         run: |
           if [[ "${{ matrix.os }}" == "windows-latest" ]]; then
             # Skip the stack-intensive McEliece tests on Windows
-            cargo test --features cryptographically-insecure --exclude pqcrypto-classicmceliece
+            cargo test --workspace --features cryptographically-insecure --exclude pqcrypto-classicmceliece
           else
             cargo test --features cryptographically-insecure
           fi
